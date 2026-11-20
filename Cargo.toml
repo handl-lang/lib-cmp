@@ -2,9 +2,11 @@
 name = "handl-lib-cmp"
 version = "0.1.0"
 edition = "2024"
-description = "cmp: Handl stdlib port (ADR-0128 split)."
+description = "cmp — comparison predicates (eq/lt/gt/clamp/min/max/compare)."
 license = "MIT"
 repository = "https://github.com/handl-lang/lib-cmp"
+readme = "README.md"
+homepage = "https://github.com/handl-lang/lib-cmp"
 
 [dependencies]
 handl-lib-ops = { git = "https://github.com/handl-lang/kernel", branch = "main" }
