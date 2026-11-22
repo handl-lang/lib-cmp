@@ -2,11 +2,11 @@ use std::cmp::Ordering;
 use std::sync::Arc;
 
 use handl_lib_ops::shared::{
-    apply_fn, arr as to_arr, b as to_bool, find_extremum_by, num, require_array,
-    require_function_and_array, require_one_arg,
+    apply_callable, arr as to_arr, b as to_bool, find_extremum_by, num, require_array,
+    require_one_arg,
 };
-use handl_ops::{Op, OpContext, OpError};
 use handl_ops::OpRegistry;
+use handl_ops::{Op, OpContext, OpError};
 use serde_json::Value as JsonValue;
 
 /// The handl source declaring the cmp `op` interface — the single source
@@ -398,10 +398,17 @@ fn sort_by_impl(
     ctx: &mut dyn OpContext,
     descending: bool,
 ) -> Result<serde_json::Value, OpError> {
-    let (fn_val, array) = require_function_and_array(args)?;
+    if args.len() < 2 {
+        return Err(OpError::TypeMismatch(format!(
+            "expected {} args, got {}",
+            2,
+            args.len(),
+        )));
+    }
+    let array = require_array(&args[1])?;
     let mut keyed: Vec<(f64, JsonValue)> = Vec::with_capacity(array.len());
     for item in array {
-        let key = apply_fn(ctx, &fn_val, item)?;
+        let key = apply_callable(ctx, &args[0], item)?;
         let num = key.as_f64().ok_or(OpError::TypeMismatch(format!(
             "expected {}, got {}",
             "number", "non-number",
@@ -448,10 +455,17 @@ fn extremum_by_impl(
     ctx: &mut dyn OpContext,
     pick_max: bool,
 ) -> Result<serde_json::Value, OpError> {
-    let (fn_val, array) = require_function_and_array(args)?;
+    if args.len() < 2 {
+        return Err(OpError::TypeMismatch(format!(
+            "expected {} args, got {}",
+            2,
+            args.len(),
+        )));
+    }
+    let array = require_array(&args[1])?;
     let mut best: Option<(f64, &JsonValue)> = None;
     for item in array {
-        let key = apply_fn(ctx, &fn_val, item)?;
+        let key = apply_callable(ctx, &args[0], item)?;
         let num = key.as_f64().ok_or(OpError::TypeMismatch(format!(
             "expected {}, got {}",
             "number", "non-number",
