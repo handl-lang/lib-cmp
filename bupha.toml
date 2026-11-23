@@ -6,7 +6,7 @@
 
 [[repos]]
 name = "handl-lang/lib-cmp"
-dir = "/home/luis/GitHub/handl-lang/lib-cmp"
+dir = "~//GitHub/handl-lang/lib-cmp"
 branch = "refs/heads/main"
   [repos.runner]
   kind = "script"
