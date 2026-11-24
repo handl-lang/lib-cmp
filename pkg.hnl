@@ -1,0 +1,11 @@
+-- lib-cmp: the `cmp` module — comparison predicates and ordering
+-- helpers. Transitional layout: the interface is `src/index.hnl`
+-- (cap/op declarations); implementations are native.
+{
+  modules: ["cmp"],
+  name: "cmp",
+  description: "Comparison predicates — eq/lt/gt/clamp/min/max/compare, sorting, range and sortedness checks.",
+  license: "MIT",
+  keywords: ["cmp", "compare", "sort", "stdlib", "handl"],
+  homepage: "https://github.com/handl-lang/lib-cmp",
+}
