@@ -1,0 +1,86 @@
+# lib-cmp atom spec (P-013/T-151) — Comparison/ordering ops — native impls in the lib-cmp crate (`cmp_op_registry`); impl keys are the `handle ... with` hints (rust_ prefix dropped).
+# `sig` = handl signature (~> canonical), `impl` = key for the
+# module's impl table, `total` replaces `guarantee: True` decl
+# clauses. Generated from the cap/op/handle triples in
+# src/index.hnl.
+module: cmp
+atoms:
+  - name: cmp.eq
+    sig: "(Value, Value) ~> Bool"
+    impl: cmp_eq
+    total: true
+  - name: cmp.ne
+    sig: "(Value, Value) ~> Bool"
+    impl: cmp_ne
+    total: true
+  - name: cmp.lt
+    sig: "(Value, Value) ~> Bool"
+    impl: cmp_lt
+    total: true
+  - name: cmp.le
+    sig: "(Value, Value) ~> Bool"
+    impl: cmp_le
+    total: true
+  - name: cmp.gt
+    sig: "(Value, Value) ~> Bool"
+    impl: cmp_gt
+    total: true
+  - name: cmp.ge
+    sig: "(Value, Value) ~> Bool"
+    impl: cmp_ge
+    total: true
+  - name: cmp.compare
+    sig: "(Value, Value) ~> Number"
+    impl: cmp_compare
+  - name: cmp.min
+    sig: "Value... ~> Value"
+    impl: cmp_min
+    total: true
+  - name: cmp.max
+    sig: "Value... ~> Value"
+    impl: cmp_max
+    total: true
+  - name: cmp.clamp
+    sig: "(Value, Value, Value) ~> Value"
+    impl: cmp_clamp
+    total: true
+  - name: cmp.between
+    sig: "(Value, Value, Value) ~> Bool"
+    impl: cmp_between
+    total: true
+  - name: cmp.in_range
+    sig: "(Value, Value, Value) ~> Bool"
+    impl: cmp_in_range
+    total: true
+  - name: cmp.is_sorted
+    sig: "Array ~> Bool"
+    impl: cmp_is_sorted
+    total: true
+  - name: cmp.is_sorted_desc
+    sig: "Array ~> Bool"
+    impl: cmp_is_sorted_desc
+    total: true
+  - name: cmp.sort
+    sig: "Array ~> Array"
+    impl: cmp_sort
+    total: true
+  - name: cmp.sort_desc
+    sig: "Array ~> Array"
+    impl: cmp_sort_desc
+    total: true
+  - name: cmp.sort_by
+    sig: "(Function, Array) ~> Array"
+    impl: cmp_sort_by
+    total: true
+  - name: cmp.sort_by_desc
+    sig: "(Function, Array) ~> Array"
+    impl: cmp_sort_by_desc
+    total: true
+  - name: cmp.min_by
+    sig: "(Function, Array) ~> Value"
+    impl: cmp_min_by
+    total: true
+  - name: cmp.max_by
+    sig: "(Function, Array) ~> Value"
+    impl: cmp_max_by
+    total: true
