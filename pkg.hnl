@@ -1,6 +1,7 @@
 -- lib-cmp: the `cmp` module — comparison predicates and ordering
 -- helpers. Transitional layout: the interface is `src/index.hnl`
 -- (cap/op declarations); implementations are native.
+-- test_coverage "none": doc-only surface — cmp.* impls are native atoms (atoms.yaml / plugin-lib-* crates).
 {
   modules: ["cmp"],
   name: "cmp",
@@ -8,4 +9,5 @@
   license: "MIT",
   keywords: ["cmp", "compare", "sort", "stdlib", "handl"],
   homepage: "https://github.com/handl-lang/lib-cmp",
+  test_coverage: "none",
 }
