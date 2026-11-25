@@ -2,6 +2,7 @@
 name = "handl-lib-cmp"
 version = "0.1.0"
 edition = "2024"
+rust-version = "1.85"
 description = "cmp — comparison predicates (eq/lt/gt/clamp/min/max/compare)."
 license = "MIT"
 repository = "https://github.com/handl-lang/lib-cmp"
